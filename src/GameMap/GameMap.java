@@ -8,33 +8,32 @@ import javafx.scene.shape.Rectangle;
 public class GameMap extends Pane {
 
     private GridPane map;
-    private MapCell[][] matrix;
 
-    public GameMap(MapCell[][] matrix) {
-        this.matrix = matrix;
+    public GameMap() {
         this.map = new GridPane();
+        this.getChildren().add(map);
+    }
 
+    public void show(MapCell[][] matrix){
         int size = 600/matrix.length;
 
         for (int x = 0; x < matrix[0].length; x++) {
             for (int y = 0; y < matrix.length; y++) {
+                Rectangle rect = new Rectangle();
+                rect.setWidth(size);
+                rect.setHeight(size);
                 if (matrix[x][y] == MapCell.SPACE)
-                    continue;
+                    rect.setFill(Color.web("#7C8D55"));
                 if (matrix[x][y] == MapCell.WALL){
-                    Rectangle wall = new Rectangle();
-                    wall.setWidth(size);
-                    wall.setHeight(size);
-                    wall.setFill(Color.web("#08081F"));
-                    GridPane.setRowIndex(wall, y);
-                    GridPane.setColumnIndex(wall, x);
-                    map.getChildren().addAll(wall);
+                    rect.setFill(Color.web("#42434F"));
                 }
+
+                GridPane.setRowIndex(rect, y);
+                GridPane.setColumnIndex(rect, x);
+                map.getChildren().addAll(rect);
+
             }
         }
-
-        this.getChildren().add(map);
     }
-
-
 
 }
