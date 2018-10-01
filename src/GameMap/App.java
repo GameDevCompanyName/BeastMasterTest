@@ -9,12 +9,9 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception {
-            MapCell[][] matrix = {
-                    {MapCell.WALL, MapCell.WALL, MapCell.WALL, MapCell.WALL},
-                    {MapCell.WALL, MapCell.SPACE, MapCell.SPACE, MapCell.SPACE},
-                    {MapCell.WALL, MapCell.SPACE, MapCell.SPACE, MapCell.WALL},
-                    {MapCell.WALL, MapCell.WALL, MapCell.SPACE, MapCell.SPACE}
-            };
+            MapCell[][] matrix = MapGenerator.generateMap(
+                    46, 6, 4, true, 120, 120, System.currentTimeMillis()
+            );
 
             GameMap map = new GameMap(matrix);
             Scene scene = new Scene(map, Color.web("#FFFAFA"));
