@@ -2,6 +2,7 @@ package GraphicMap;
 
 import javafx.animation.PauseTransition;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
@@ -24,7 +25,7 @@ public class GraphicMap {
 
     public GraphicMap(int fillPercent, int smoothingCycles, int smoothingParameter, boolean makeWalls, int width, int height, long seed) {
         map = new MyRectangle[width][height];
-        int size = 1000/width;
+        int size = 250/width;
         for (int x = 0; x < map[0].length; x++) {
             for (int y = 0; y < map.length; y++) {
                 MyRectangle newRect = new MyRectangle();
@@ -53,11 +54,12 @@ public class GraphicMap {
         generateNoise();
 
         int smoothCounter = smoothingCycles;
-        PauseTransition pause = new PauseTransition(Duration.millis(250));
-        pause.setOnFinished(event ->
-                smooth(smoothCounter)
-        );
-        pause.play();
+//        PauseTransition pause = new PauseTransition(Duration.millis(250));
+//        pause.setOnFinished(event ->
+//                smooth(smoothCounter)
+//        );
+//        pause.play();
+        smooth(smoothCounter);
 
     }
 
@@ -80,11 +82,13 @@ public class GraphicMap {
         if (smoothCounter == 1)
             return;
 
-        PauseTransition pause = new PauseTransition(Duration.millis(250));
-        pause.setOnFinished(event ->
-                smooth(smoothCounter-1)
-        );
-        pause.play();
+//        PauseTransition pause = new PauseTransition(Duration.millis(250));
+//        pause.setOnFinished(event ->
+//                smooth(smoothCounter-1)
+//        );
+//        pause.play();
+
+        smooth(smoothCounter - 1);
     }
 
     private static int countSurroundingWalls(Rectangle[][] map, int x, int y) {
@@ -123,7 +127,7 @@ public class GraphicMap {
         }
     }
 
-    public GridPane getContainer() {
+    public Pane getContainer() {
         GridPane container = new GridPane();
         for (int x = 0; x < map[0].length; x++) {
             for (int y = 0; y < map.length; y++) {
@@ -132,6 +136,41 @@ public class GraphicMap {
                 container.getChildren().addAll(map[y][x]);
             }
         }
-        return container;
+        Pane pane = new Pane();
+        pane.getChildren().add(container);
+        return pane;
+    }
+
+    public void makePassage(Direction dir) {
+
+        int maxX = map[0].length - 1;
+        int lowX = 0;
+        int maxY = map.length - 1;
+        int lowY = 0;
+
+        switch (dir){
+            case DOWN:
+                lowX = maxX = (map[0].length - 1)/2;
+                lowY = (map.length - 1)/2;
+                break;
+            case UP:
+                lowX = maxX = (map[0].length - 1)/2;
+                maxY = (map.length - 1)/2;
+                break;
+            case LEFT:
+                lowY = maxY = (map.length - 1)/2;
+                maxX = (map[0].length - 1)/2;
+                break;
+            case RIGHT:
+                lowY = maxY = (map.length - 1)/2;
+                lowX = (map[0].length - 1)/2;
+        }
+
+        for (int x = lowX; x <= maxX; x++){
+            for (int y = lowY; y <= maxY; y++){
+                map[y][x].setAnimatedFill(Color.web(SPACE));
+            }
+        }
+
     }
 }

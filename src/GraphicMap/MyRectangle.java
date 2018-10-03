@@ -14,8 +14,9 @@ public class MyRectangle extends Rectangle{
 
     public void setAnimatedFill(Color color) {
 
-        FillTransition ft = new FillTransition(Duration.millis(200), this, currentColor, color);
-        ft.play();
+//        FillTransition ft = new FillTransition(Duration.millis(200), this, currentColor, color);
+//        ft.play();
+        this.setFill(color);
         currentColor = color;
 
     }
