@@ -1,6 +1,5 @@
 package GraphicMap;
 
-import GameMap.GraphicMap;
 import javafx.animation.FadeTransition;
 import javafx.animation.FillTransition;
 import javafx.scene.paint.Color;
@@ -15,7 +14,7 @@ public class MyRectangle extends Rectangle{
 
     public void setAnimatedFill(Color color) {
 
-        FillTransition ft = new FillTransition(Duration.millis(900), this, currentColor, color);
+        FillTransition ft = new FillTransition(Duration.millis(200), this, currentColor, color);
         ft.play();
         currentColor = color;
 
