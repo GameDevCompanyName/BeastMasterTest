@@ -1,4 +1,4 @@
-package GraphicMap;
+package MulticavesMap;
 
 import javafx.application.Application;
 import javafx.scene.Scene;

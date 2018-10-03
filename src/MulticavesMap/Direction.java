@@ -1,4 +1,4 @@
-package GraphicMap;
+package MulticavesMap;
 
 public enum Direction {
 

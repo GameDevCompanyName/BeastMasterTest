@@ -1,11 +1,9 @@
-package GraphicMap;
+package MulticavesMap;
 
-import javafx.animation.PauseTransition;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
-import javafx.util.Duration;
 
 import java.util.Random;
 

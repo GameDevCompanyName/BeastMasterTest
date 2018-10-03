@@ -1,4 +1,4 @@
-package GraphicMap;
+package MulticavesMap;
 
 import javafx.animation.FadeTransition;
 import javafx.animation.FillTransition;
