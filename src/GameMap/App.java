@@ -14,7 +14,7 @@ public class App extends Application {
     public void start(Stage primaryStage) throws Exception {
             long seed = System.currentTimeMillis();
             MapCell[][] matrix = MapGenerator.generateMap(
-                    40, 5, 4, true, 40, 40, seed
+                    45, 10, 4, true, 60, 60, seed
             );
 
             Label seedLabel = new Label(Long.toString(seed));
@@ -28,7 +28,7 @@ public class App extends Application {
             scene.setOnMouseClicked(event -> {
                     seedLabel.setText(String.valueOf(System.currentTimeMillis()));
                     map.show(MapGenerator.generateMap(
-                        42, 5, 4, true, 40, 40, Long.parseLong(seedLabel.getText())
+                            45, 10, 4, true, 60, 60, Long.parseLong(seedLabel.getText())
                     )
                 );
             });
