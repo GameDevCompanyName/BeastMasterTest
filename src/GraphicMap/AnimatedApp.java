@@ -16,8 +16,13 @@ public class AnimatedApp extends Application {
     @Override
     public void start(Stage primaryStage) throws Exception {
 
+        String kingdomColor1 = "#4f7dc6";
+        String kingdomColor2 = "#bb7ecc";
+        String kingdomColor3 = "#8bcc7e";
+        String kingdomColor4 = "#ccc57e";
+
         long seed = 1;
-        int fillPercent = 34;
+        int fillPercent = 18;
         int smoothingCycles = 3;
         int smoothingParameter = 4;
         boolean makeWalls = true;
@@ -38,7 +43,9 @@ public class AnimatedApp extends Application {
                 makeWalls,
                 width,
                 height,
-                generateSeed()
+                generateSeed(),
+                kingdomColor1
+
         );
 
         GraphicMap map2 = new GraphicMap(
@@ -48,7 +55,8 @@ public class AnimatedApp extends Application {
                 makeWalls,
                 width,
                 height,
-                generateSeed()
+                generateSeed(),
+                kingdomColor2
         );
 
         GraphicMap map3 = new GraphicMap(
@@ -58,7 +66,8 @@ public class AnimatedApp extends Application {
                 makeWalls,
                 width,
                 height,
-                generateSeed()
+                generateSeed(),
+                kingdomColor3
         );
 
         GraphicMap map4 = new GraphicMap(
@@ -68,7 +77,8 @@ public class AnimatedApp extends Application {
                 makeWalls,
                 width,
                 height,
-                generateSeed()
+                generateSeed(),
+                kingdomColor4
         );
 
         GridPane gridMap = new GridPane();
@@ -103,7 +113,8 @@ public class AnimatedApp extends Application {
                     makeWalls,
                     width,
                     height,
-                    generateSeed()
+                    generateSeed(),
+                    kingdomColor1
             );
 
             GraphicMap map2new = new GraphicMap(
@@ -113,7 +124,8 @@ public class AnimatedApp extends Application {
                     makeWalls,
                     width,
                     height,
-                    generateSeed()
+                    generateSeed(),
+                    kingdomColor2
             );
 
             GraphicMap map3new = new GraphicMap(
@@ -123,7 +135,8 @@ public class AnimatedApp extends Application {
                     makeWalls,
                     width,
                     height,
-                    generateSeed()
+                    generateSeed(),
+                    kingdomColor3
             );
 
             GraphicMap map4new = new GraphicMap(
@@ -133,7 +146,8 @@ public class AnimatedApp extends Application {
                     makeWalls,
                     width,
                     height,
-                    generateSeed()
+                    generateSeed(),
+                    kingdomColor4
             );
 
             GridPane gridMapNew = new GridPane();

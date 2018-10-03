@@ -12,18 +12,19 @@ import java.util.Random;
 public class GraphicMap {
 
     static String WALL = "#423535";
-    static String SPACE = "#dd6c6c";
+    private String SPACE;
 
     MyRectangle[][] map;
-    int fillPercent;
-    int smoothingCycles;
-    int smoothingParameter;
-    boolean makeWalls;
-    int width;
-    int height;
-    long seed;
+    private int fillPercent;
+    private int smoothingCycles;
+    private int smoothingParameter;
+    private boolean makeWalls;
+    private int width;
+    private int height;
+    private long seed;
 
-    public GraphicMap(int fillPercent, int smoothingCycles, int smoothingParameter, boolean makeWalls, int width, int height, long seed) {
+    public GraphicMap(int fillPercent, int smoothingCycles, int smoothingParameter, boolean makeWalls, int width, int height, long seed, String spaceColor) {
+        this.SPACE = spaceColor;
         map = new MyRectangle[width][height];
         int size = 250/width;
         for (int x = 0; x < map[0].length; x++) {
