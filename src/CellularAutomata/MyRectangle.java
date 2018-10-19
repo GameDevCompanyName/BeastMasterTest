@@ -17,7 +17,7 @@ public class MyRectangle extends Rectangle{
     public MyRectangle(){
         this.setOnMouseClicked(event -> {
             Color newColor;
-            if (currentColor == Color.web(WALL))
+            if (currentColor.equals(Color.web(WALL)))
                 newColor = Color.web(SPACE);
             else
                 newColor = Color.web(WALL);

@@ -6,6 +6,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 
+import java.util.Arrays;
 import java.util.Random;
 
 import static CellularAutomata.Constants.PAUSE_TIME;
@@ -15,6 +16,7 @@ import static CellularAutomata.Constants.WALL;
 public class GraphicMap {
 
     MyRectangle[][] map;
+    GridPane container;
     int fillPercent;
     int width;
     int height;
@@ -37,6 +39,14 @@ public class GraphicMap {
         this.width = width;
         this.height = height;
         this.seed = seed;
+        container = new GridPane();
+        for (int x = 0; x < map[0].length; x++) {
+            for (int y = 0; y < map.length; y++) {
+                GridPane.setRowIndex(map[y][x], y);
+                GridPane.setColumnIndex(map[y][x], x);
+                container.getChildren().addAll(map[y][x]);
+            }
+        }
     }
 
     public void proceedMap() {
@@ -59,21 +69,27 @@ public class GraphicMap {
     private void update() {
         if (!shouldUpdate)
             return;
+        boolean[][] newMap = new boolean[map.length][map[0].length];
         for (int x = 0; x < map[0].length; x++) {
             for (int y = 0; y < map.length; y++) {
                 int walls = countSurroundingWalls(map, x, y);
                 boolean wasWall = map[y][x].getFill().equals(Color.web(WALL));
-
-
                 boolean isWall = applyRules(wasWall, walls);
-
                 if (isWall)
+                    newMap[y][x] = true;
+                else
+                    newMap[y][x] = false;
+
+            }
+        }
+        for (int x = 0; x < map[0].length; x++) {
+            for (int y = 0; y < map.length; y++) {
+                if (newMap[y][x])
                     map[y][x].setAnimatedFill(Color.web(WALL));
                 else
                     map[y][x].setAnimatedFill(Color.web(SPACE));
             }
         }
-
         PauseTransition pause = new PauseTransition(Duration.millis(PAUSE_TIME));
         pause.setOnFinished(event ->
                 update()
@@ -127,14 +143,6 @@ public class GraphicMap {
     }
 
     public GridPane getContainer() {
-        GridPane container = new GridPane();
-        for (int x = 0; x < map[0].length; x++) {
-            for (int y = 0; y < map.length; y++) {
-                GridPane.setRowIndex(map[y][x], y);
-                GridPane.setColumnIndex(map[y][x], x);
-                container.getChildren().addAll(map[y][x]);
-            }
-        }
         return container;
     }
 
@@ -149,8 +157,7 @@ public class GraphicMap {
 
     public void randomize() {
         this.seed = new Random().nextLong();
-        if (!shouldUpdate)
-            generateNoise();
+        generateNoise();
     }
 
     public void clear() {
@@ -159,5 +166,12 @@ public class GraphicMap {
                 map[y][x].setAnimatedFill(Color.web(SPACE));
             }
         }
+    }
+
+    public void toggleGrid() {
+        if (container.isGridLinesVisible())
+            container.setGridLinesVisible(false);
+        else
+            container.setGridLinesVisible(true);
     }
 }

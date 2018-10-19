@@ -19,9 +19,9 @@ public class AnimatedApp extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         long seed = 1538560814829l;
-        int fillPercent = 15;
-        int width = 30;
-        int height = 52;
+        int fillPercent = 50;
+        int width = 50;
+        int height = 70;
 
         GraphicMap map = new GraphicMap(
                 fillPercent,
@@ -53,6 +53,9 @@ public class AnimatedApp extends Application {
             }
             if (event.getCode().equals(KeyCode.DOWN)){
                 Constants.lowerSpeed();
+            }
+            if (event.getCode().equals(KeyCode.G)){
+                map.toggleGrid();
             }
         });
 
