@@ -23,6 +23,18 @@ public class AnimatedApp extends Application {
         int width = 50;
         int height = 70;
 
+
+
+
+
+
+
+
+
+
+
+
+
         GraphicMap map = new GraphicMap(
                 fillPercent,
                 width,
