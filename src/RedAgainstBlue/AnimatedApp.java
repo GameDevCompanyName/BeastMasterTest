@@ -16,9 +16,9 @@ public class AnimatedApp extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         long seed = 1538560814829l;
-        int fillPercent = 80;
-        int width = 50;
-        int height = 50;
+        int fillPercent = 50;
+        int width = 80;
+        int height = 80;
 
         GraphicMap map = new GraphicMap(
                 fillPercent,
@@ -56,19 +56,6 @@ public class AnimatedApp extends Application {
             }
         });
 
-//        scene.setOnMouseClicked(event -> {
-//            seedLabel.setText(String.valueOf(generateSeed()));
-//            GraphicMap newMap = new GraphicMap(
-//                    fillPercent,
-//                    width,
-//                    height,
-//                    Long.parseLong(seedLabel.getText()
-//                    )
-//            );
-//            mainPane.getChildren().clear();
-//            mainPane.getChildren().addAll(newMap.getContainer(), seedLabel);
-//            newMap.proceedMap();
-//        });
         primaryStage.setScene(scene);
         primaryStage.show();
     }

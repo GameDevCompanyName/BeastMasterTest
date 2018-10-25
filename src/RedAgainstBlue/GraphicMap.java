@@ -24,7 +24,7 @@ public class GraphicMap {
 
     public GraphicMap(int fillPercent, int width, int height, long seed) {
         map = new MyRectangle[width][height];
-        int size = 650/width;
+        int size = 800/width;
         for (int x = 0; x < map[0].length; x++) {
             for (int y = 0; y < map.length; y++) {
                 MyRectangle newRect = new MyRectangle();
