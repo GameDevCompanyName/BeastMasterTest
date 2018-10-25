@@ -1,14 +1,11 @@
-package CellularAutomata;
+package RedAgainstBlue;
 
 import javafx.application.Application;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.control.Label;
 import javafx.scene.input.KeyCode;
-import javafx.scene.layout.GridPane;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 import java.util.Random;
@@ -19,9 +16,9 @@ public class AnimatedApp extends Application {
     public void start(Stage primaryStage) throws Exception {
 
         long seed = 1538560814829l;
-        int fillPercent = 50;
+        int fillPercent = 80;
         int width = 50;
-        int height = 70;
+        int height = 50;
 
         GraphicMap map = new GraphicMap(
                 fillPercent,
